@@ -1,0 +1,44 @@
+---
+root: true
+parser: "@typescript-eslint/parser"
+parserOptions:
+  project: "./tsconfig.json"
+plugins:
+  - "@typescript-eslint"
+  - eslint-comments
+  - promise
+  - unicorn
+  - i18next
+  - "@emotion"
+extends:
+  - eslint:recommended
+  - airbnb-typescript
+  - airbnb/hooks
+  - plugin:@typescript-eslint/recommended
+  - plugin:@typescript-eslint/recommended-requiring-type-checking
+  - plugin:eslint-comments/recommended
+  - plugin:jest/recommended
+  - plugin:promise/recommended
+  - plugin:unicorn/recommended
+  - prettier
+  - next
+  - next/core-web-vitals
+  - plugin:i18next/recommended
+rules:
+  "@typescript-eslint/consistent-type-definitions":
+    - error
+    - type
+  "@typescript-eslint/no-unused-vars":
+    - error
+    - ignoreRestSiblings: true
+  "@emotion/syntax-preference":
+    - error
+    - object
+
+  no-console: error
+  no-alert: error
+  no-underscore-dangle: error
+  "i18next/no-literal-string": error
+  unicorn/prevent-abbreviations: "off" # It's ok to use common abbreviations
+  unicorn/no-array-for-each: "off" # Airbnb prefers the opposite
+  jsx-a11y/anchor-is-valid: "off" # Incompatible with Next.js links
