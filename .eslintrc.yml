@@ -24,6 +24,7 @@ extends:
   - next
   - next/core-web-vitals
   - plugin:i18next/recommended
+  - plugin:testcafe/recommended
 rules:
   "@typescript-eslint/consistent-type-definitions":
     - error
@@ -33,12 +34,24 @@ rules:
     - ignoreRestSiblings: true
   "@emotion/syntax-preference":
     - error
-    - object
+    - string
 
   no-console: error
   no-alert: error
   no-underscore-dangle: error
-  "i18next/no-literal-string": error
+  i18next/no-literal-string: "warn"
+  import/prefer-default-export: "off"
   unicorn/prevent-abbreviations: "off" # It's ok to use common abbreviations
   unicorn/no-array-for-each: "off" # Airbnb prefers the opposite
   jsx-a11y/anchor-is-valid: "off" # Incompatible with Next.js links
+overrides:
+  - files:
+      - src/translations/**/*.ts
+      - e2e/**/*.ts
+    rules:
+      i18next/no-literal-string: "off"
+  - files:
+      - e2e/**/*.ts
+    rules:
+      jest/no-done-callback: "off"
+      no-console: "off"
