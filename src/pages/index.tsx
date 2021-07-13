@@ -1,16 +1,20 @@
 import { GetStaticProps } from "next";
-import { HomePage, Locale } from "../translations/type";
+import { HomePage, LayoutContent, Locale } from "../translations/type";
 import Home from "../components/home";
 import Layout from "../components/layout";
-import i18n from "../translations/home";
+import i18nHome from "../translations/home";
+import i18nLayout from "../translations/layout";
 
 type Props = {
-  content: HomePage;
+  content: {
+    home: HomePage;
+    layout: LayoutContent;
+  };
 };
 
-const Index = ({ content }: Props): JSX.Element => (
-  <Layout>
-    <Home content={content} />
+const Index = ({ content: { home, layout } }: Props): JSX.Element => (
+  <Layout content={layout}>
+    <Home content={home} />
   </Layout>
 );
 
@@ -18,7 +22,10 @@ export const getStaticProps: GetStaticProps<Props> = (context) => {
   const locale: Locale = context.locale as Locale;
   return {
     props: {
-      content: i18n(locale),
+      content: {
+        home: i18nHome(locale),
+        layout: i18nLayout(locale),
+      },
     },
   };
 };

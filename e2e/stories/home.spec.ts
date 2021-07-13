@@ -1,13 +1,19 @@
-import { test, expect } from "@playwright/test";
+import { Selector } from "testcafe";
 
-test("basic test", async ({ browser }) => {
-  const b = await browser.newContext({
-    locale: "de",
-  });
-  const page = await b.newPage();
-  await page.goto("http://localhost:3000");
-  await page.screenshot({
-    path: "blah.png",
-  });
-  expect(true).toBe(false);
+fixture`Home - default` //
+  .page`http://localhost:3000`;
+
+test("Defaults to english", async (t) => {
+  const welcomeExists = await Selector("h1").withText("Welcome to Next.js!")
+    .exists;
+  await t.expect(welcomeExists).eql(true);
+});
+
+fixture`Home - German` //
+  .page`http://localhost:3000/de`;
+
+test("German route is German", async (t) => {
+  const welcomeExists = await Selector("h1").withText("Willkommen bei Next.js!")
+    .exists;
+  await t.expect(welcomeExists).eql(true);
 });

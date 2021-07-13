@@ -5,6 +5,7 @@ module.exports = {
     "**/__tests__/**/*.+(ts|tsx|js)",
     "**/?(*.)+(spec|test).+(ts|tsx|js)",
   ],
+  modulePathIgnorePatterns: ["e2e"],
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
   },

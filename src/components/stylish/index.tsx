@@ -9,12 +9,10 @@ type Props = {
 const Index = ({ content }: Props): JSX.Element => (
   <div css={styles.container}>
     <div css={styles.basic}>{content.coolStyles}</div>
-    <div css={styles.combined}>
-      With <code>:hover</code>.
-    </div>
-    <div css={styles.animated(styles.bounce)}>Let&apos;s bounce.</div>
+    <div css={styles.combined}>{content.withHover}</div>
+    <div css={styles.animated(styles.bounce)}>{content.letsBounce}</div>
     <Link href="/" passHref>
-      <a>Home</a>
+      <a>{content.home}</a>
     </Link>
   </div>
 );

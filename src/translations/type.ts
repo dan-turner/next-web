@@ -12,6 +12,10 @@ type Card = {
   description: string;
 };
 
+export type LayoutContent = {
+  footer: string;
+};
+
 export type HomePage = {
   head: {
     title: string;
@@ -34,11 +38,15 @@ export type StylishPage = {
     description: string;
   };
   coolStyles: string;
+  withHover: string;
+  letsBounce: string;
+  home: string;
 };
 
 export type Pages = {
   home: HomePage;
   stylish: StylishPage;
+  layout: LayoutContent;
 };
 
 export type PageKeys = keyof Pages;
