@@ -1,5 +1,4 @@
 import { AppProps } from "next/app";
-import { appWithTranslation } from "next-i18next";
 import { Global } from "@emotion/react";
 import styles from "../components/layout/styles";
 
@@ -10,4 +9,4 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => (
     <Component {...pageProps} />
   </>
 );
-export default appWithTranslation(MyApp);
+export default MyApp;

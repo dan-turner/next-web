@@ -9,11 +9,6 @@ const global = css`
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
   * {
     box-sizing: border-box;
   }
@@ -32,6 +27,8 @@ const footer = css`
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    color: inherit;
+    text-decoration: none;
   }
 `;
 

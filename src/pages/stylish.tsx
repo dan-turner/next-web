@@ -1,13 +1,13 @@
 import { GetStaticProps } from "next";
 import Stylish from "../components/stylish";
 import Layout from "../components/layout";
-import i18nStylish from "../translations/stylish";
-import { LayoutContent, Locale, StylishPage } from "../translations/type";
-import i18nLayout from "../translations/layout";
+import { getLayout, LayoutContent } from "../contentful/layout";
+import { getStylish, StylishPageContent } from "../contentful/stylish";
+import config from "../config";
 
 type Props = {
   content: {
-    stylish: StylishPage;
+    stylish: StylishPageContent;
     layout: LayoutContent;
   };
 };
@@ -19,16 +19,13 @@ const Page = ({ content: { stylish, layout } }: Props): JSX.Element => (
   </Layout>
 );
 
-export const getStaticProps: GetStaticProps<Props> = (context) => {
-  const locale: Locale = context.locale as Locale;
-  return {
-    props: {
-      content: {
-        stylish: i18nStylish(locale),
-        layout: i18nLayout(locale),
-      },
+export const getStaticProps: GetStaticProps<Props> = async (context) => ({
+  props: {
+    content: {
+      stylish: await getStylish(context.locale),
+      layout: await getLayout(context.locale, config.layout),
     },
-  };
-};
+  },
+});
 
 export default Page;

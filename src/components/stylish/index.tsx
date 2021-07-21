@@ -1,19 +1,15 @@
-import Link from "next/link";
-import { StylishPage } from "../../translations/type";
+import { StylishPageContent } from "../../contentful/stylish";
 import styles from "./styles";
 
 type Props = {
-  content: StylishPage;
+  content: StylishPageContent;
 };
 
 const Index = ({ content }: Props): JSX.Element => (
   <div css={styles.container}>
     <div css={styles.basic}>{content.coolStyles}</div>
-    <div css={styles.combined}>{content.withHover}</div>
-    <div css={styles.animated(styles.bounce)}>{content.letsBounce}</div>
-    <Link href="/" passHref>
-      <a>{content.home}</a>
-    </Link>
+    <div css={styles.combined}>{content.hover}</div>
+    <div css={styles.animated(styles.bounce)}>{content.animated}</div>
   </div>
 );
 
